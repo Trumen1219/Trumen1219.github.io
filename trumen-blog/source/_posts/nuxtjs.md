@@ -1,4 +1,3 @@
----
 title: Nuxt3
 date: 2022-12-01 00:27:45
 tags: Nuxt3
@@ -85,7 +84,7 @@ Nuxt3的目录结构
 - package.json        // 包的配置文件和项目的启动调式命令配置
 - README.md           // 项目的说明文件
 - tsconfig.json       // TypeScript的配置文件
- 
+
 随着我们的开发目录也会越来越多，比如常用的还有下面三个目录。
 
 - pages               // 开发的页面目录
@@ -110,11 +109,9 @@ Nuxt3的目录结构
     <h1>Hello World</h1>
   </div>
 </template>
-
 <script setup>
 import {} from "vue";
 </script>
-
 <style scoped></style>
 ```
 
@@ -197,11 +194,9 @@ http://localhost:3000/demo1
 <template>
   <div class=""><h1>Index Page</h1></div>
 </template>
-
 <script setup>
 import {} from "vue";
 </script>
-
 <style scoped></style>
 ```
 这时候在访问http://localhost:3000就可以访问到页面了。
@@ -241,11 +236,9 @@ VSCode 自定义用户代码片段的方法
 <template>
   <div class="">获取的id:{{ $route.params.id }}</div>
 </template>
-
 <script setup>
 import { } from "vue";
 </script>
-
 <style scoped></style>
 ```
 
@@ -258,11 +251,9 @@ import { } from "vue";
     <NuxtLink to="/demo2-38">Demo2.vue</NuxtLink>
   </div>
 </template>
-
 <script setup>
 import {} from "vue";
 </script>
-
 <style scoped></style>
 ```
 
@@ -276,13 +267,11 @@ import {} from "vue";
 <template>
   <div class="">获取的id:{{ id }}</div>
 </template>
-
 <script setup>
 import { ref } from "vue";
 const route = useRoute();
 const id = ref(route.params.id);
 </script>
-
 <style scoped></style>
 ```
 
@@ -303,14 +292,12 @@ const id = ref(route.params.id);
   <div class="">获取的id:{{ id }}</div>
   <div class="">获取的name:{{ name }}</div>
 </template>
-
 <script setup>
 import { ref } from "vue";
 const route = useRoute();
 const id = ref(route.params.id);
 const name = ref(route.params.name);
 </script>
-
 <style scoped></style>
 ```
 
@@ -349,11 +336,9 @@ const name = ref(route.params.name);
   <!-- 子页面的出口-->
   <NuxtChild></NuxtChild>
 </template>
-
 <script setup>
 import {} from "vue";
 </script>
-
 <style scoped></style>
 ```
 
@@ -362,11 +347,9 @@ import {} from "vue";
 <template>
   <div class="">Child Page</div>
 </template>
-
 <script setup>
 import {} from "vue";
 </script>
-
 <style scoped></style>
 ```
 
@@ -381,11 +364,9 @@ import {} from "vue";
 <template>
   <div class="">Two Page</div>
 </template>
-
 <script setup>
 import {} from "vue";
 </script>
-
 <style scoped></style>
 ```
 
@@ -458,11 +439,9 @@ import {} from "vue";
     <template #two> 我是two中的内容 </template>
   </NuxtLayout>
 </template>
-
 <script setup>
 import {} from "vue";
 </script>
-
 <style scoped></style>
 ```
 
@@ -512,11 +491,9 @@ Nuxt3的所有自定义组件，必须写在`components`目录下，写在这个
     </template>
   </NuxtLayout>
 </template>
-
 <script setup>
 import {} from "vue";
 </script>
-
 <style scoped></style>
 ```
 
@@ -607,11 +584,9 @@ import {} from "vue";
 <template>
   <div class=""><button>MyButton</button></div>
 </template>
-
 <script setup>
 import {} from "vue";
 </script>
-
 <style scoped></style>
 ```
 
@@ -645,11 +620,9 @@ import {} from "vue";
 <template>
   <div class="">Lazy Text Content</div>
 </template>
-
 <script setup>
 import {} from "vue";
 </script>
-
 <style scoped></style>
 ```
 
@@ -662,7 +635,6 @@ import {} from "vue";
     <button @click="handleClick">显示/隐藏</button>
   </div>
 </template>
-
 <script setup>
 import { ref } from "vue";
 const show = ref(false);
@@ -670,7 +642,6 @@ const handleClick = () => {
   show.value = show.value ? false : true;
 };
 </script>
-
 <style scoped></style>
 ```
 
@@ -698,11 +669,8 @@ export  const getTime=()=>{
   const date = today.getFullYear() + "-" + twoDigits(today.getMonth() + 1) + "-" + twoDigits(today.getDate());
   const time = twoDigits(today.getHours()) + ":" + twoDigits(today.getMinutes()) + ":" + twoDigits(today.getSeconds());
   const timeString ='当前时间：' + date + '  ' + time;
-
   return timeString;
-
 }
-
 function twoDigits(val) {
   if (val < 10) return "0" + val;
   return val;
@@ -713,12 +681,10 @@ function twoDigits(val) {
 <template>
   <div class="">{{ time }}</div>
 </template>
-
 <script setup>
 import { ref } from "vue";
 const time = ref(getTime());
 </script>
-
 <style scoped></style>
 ```
 
@@ -750,13 +716,11 @@ export const test = ()=>{
 <template>
   <div class="">{{ time }}</div>
 </template>
-
 <script setup>
 import { ref } from "vue";
 const time = ref(getTime());
 test();
 </script>
-
 <style scoped></style>
 ```
 
@@ -788,19 +752,15 @@ Nuxt3中提供了四种方法：**useAsyncData** 、**useFetch** 、**useLazyFet
 <template>
   <div class="">{{list}}</div>
 </template>
-
 <script setup>
 import {} from "vue";
-
 const res = await useAsyncData("getList", () =>
   $fetch("http://121.36.81.61:8000/getTenArticleList")
 );
 const list = ref(res)
 //const list = ref(res.data._rawValue.data)得到数据
 </script>
-
 <style scoped></style>
-
 //$fetch( )方法是nuxt3提供的内置方法，我们直接可以使用。
 ```
 
@@ -852,15 +812,12 @@ const res = await useFetch("http://121.36.81.61:8000/getTenArticleList", {
 <template>
   <div class="">{{ list }}</div>
 </template>
-
 <script setup>
 import { ref } from "vue";
-
 const res = await useFetch("http://121.36.81.61:8000/getTenArticleList");
 const list = ref(res.data._rawValue.data);
 console.log(res);
 </script>
-
 <style scoped></style>
 ```
 这样就可以在页面上看到这些从后端得到的数据了。在实际开发中，我们会把这个数组循环输出，并制作一个精美的列表。
@@ -927,7 +884,6 @@ export default defineNuxtRouteMiddleware((to, from) => {
 ```js
 export default defineNuxtRouteMiddleware((to, from) => {
   console.log("Hello")
-
 })
 ```
 这时候它对任何页面都是不起作用的，你需要再去对应的页面里注册一下。去pages文件夹，新建一个文件demo7.vue。然后需要注册这个页面使用这个中间件，代码如下。
@@ -935,14 +891,12 @@ export default defineNuxtRouteMiddleware((to, from) => {
 <template>
   <div class="">Demo7 Page</div>
 </template>
-
 <script setup>
 definePageMeta({
   middleware: ["default"],
   // or middleware: 'auth'
 });
 </script>
-
 <style scoped></style>
 ```
 这样就对这个页面注册了一个专属的导航中间件。
@@ -1007,7 +961,6 @@ Nuxt3中提供了 useHead方法来设置SEO需要的内容，用它可以设置H
 <template>
   <div class="">Demo8 Page</div>
 </template>
-
 <script setup>
 useHead({
   title: " JSPang.com 技术胖的博客",
@@ -1019,7 +972,6 @@ useHead({
   ],
 });
 </script>
-
 <style scoped></style>
 ```
 
@@ -1041,12 +993,10 @@ useHead({
     <div>技术胖的博客</div>
   </div>
 </template>
-
 <script setup>
 import { ref } from "vue";
 const title = ref("技术胖的博客");
 </script>
-
 <style scoped></style>
 ```
 
@@ -1076,7 +1026,6 @@ const cookie = useCookie(name, options)
   <button @click="reset">Reset</button>
   <button @click="add">Add</button>
 </template>
-
 <script setup>
 const counter = useCookie("counter");
 counter.value = counter.value || 0;
@@ -1087,7 +1036,6 @@ const add = () => {
   counter.value = counter.value + 1;
 };
 </script>
-
 <style scoped></style>
 ```
 
@@ -1121,4 +1069,4 @@ const counter = useCookie("counter",{
   secure:true,
 });
 这个需要配置HTTPS 所以不太好演示，这里也就不演示了。
-其余的还有domain ,path ,sameSite ,encode,decode 这些属性设置，其实都跟安全有关，因为Cookie的设置确实需要考虑安全性，所以根据服务端和app的需求，尽量设置多的安全性参数。
+其余的还有domain ,path ,sameSite ,encode,decode 这些属性设置，其实都跟安全有关，因为Cookie的设置确实需要考虑安全性，所以根据服务端和app的需求，尽量设置多的安全性参数
