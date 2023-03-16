@@ -103,6 +103,6 @@ theme: fluid
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repo: https://github.com/trumen1219.github.io
+  repo: https://github.com/Trumen1219.github.io
   branch: main
   token: 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
