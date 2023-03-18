@@ -1,5 +1,6 @@
+---
 title: Nuxt3
-date: 2022-12-01 00:27:45
+date: 2023-01-01 00:00:00
 tags: Nuxt3
 layout: aboutNuxt3
 ---

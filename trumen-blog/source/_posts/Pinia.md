@@ -1,6 +1,6 @@
 ---
 title: Pinia
-date: 2023-01-01 00:27:45
+date: 2023-01-01 00:00:00
 tags: Pinia
 layout: aboutPinia
 ---
