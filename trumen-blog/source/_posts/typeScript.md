@@ -103,8 +103,9 @@ let big: bigint = 100n;
 ```
 
 * boolean
+
 ```typeScript
-letisDone: boolean=false;
+let isDone: boolean=false;
 ```
 
 * string
@@ -116,7 +117,10 @@ let sentence: string = `Hello, my name is ${fullName};
 ```
 * 字面量
 	* 也可以使用字面量去指定变量的类型，通过字面量可以确定变量的取值范围
-	* ```typeScript  letcolor: 'red'|'blue'|'black';letnum: 1|2|3|4|5;```
+```typeScript
+let color: 'red'|'blue'|'black';
+let num: 1|2|3|4|5;
+```
 
 * any
 	类型是any的变量可以赋值给任意变量
@@ -124,7 +128,10 @@ let sentence: string = `Hello, my name is ${fullName};
 let d: any=4;d='hello';d=true;
 ```
 * unknown
-	let notSure: unknown=4;notSure='hello';
+```ts
+	let notSure: unknown=4;
+    notSure='hello';
+```
 	* 实际上就是一个类型安全的any，unknown类型的变量，不能直接赋值给其他变量
 	* 可以通过
 	（1）
@@ -132,6 +139,7 @@ let d: any=4;d='hello';d=true;
 		if(typeof e === 'string'){
 			s = e;
 		}
+        ```
 	（2）类型断言（用来告诉解析器变量的实际类型）
 			
 * void
@@ -144,11 +152,12 @@ let unusable: void=undefined;
 	表示永远不会返回结果
 ```typeScript
 	function error(message: string): never {
-  throw new Error(message);
-}
+        throw new Error(message);
+    }
 ```
 
 * object
+
 	object表示一个js对象
 
 ```typeScript
@@ -180,6 +189,7 @@ let d :(a:number ,b:number)=>number;
 ```
 
 * array
+
 	数组的类型声明：
 	
 	类型[]
@@ -191,6 +201,7 @@ let list: number[] = [1, 2, 3];
 let list: Array<number> = [1, 2, 3];
 ```
 * tuple
+
 	元组，元组就是固定长度的数组
 	
 	语法：[类型，类型，类型]
