@@ -13,7 +13,7 @@ timezone: ''
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://example.com
+url: https://Trumen1219.github.io
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -102,7 +102,7 @@ theme: fluid
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: git
-  repo: https://github.com/Trumen1219/Trumen1219.github.io.git
+  type: 'git'
+  repo: git@github.com:Trumen1219/Trumen1219.github.io.git
   branch: main
-  token: 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
+  # token: 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
