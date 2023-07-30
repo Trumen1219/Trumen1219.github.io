@@ -16,19 +16,22 @@
   <meta name="author" content="Trumen">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
-<meta property="og:title" content="测试文章">
-<meta property="og:url" content="https://trumen1219.github.io/2023/07/30/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/index.html">
+    <meta name="description" content="object 的哪些属性不能被 stringfy在 JavaScript 中，stringify 方法用于将对象转换为字符串。然而，并非所有对象属性都可以被 stringify 方法转换为字符串。以下是一些不能被 stringify 方法转换为字符串的属性: 函数属性:函数属性不能被 stringify 方法转换为字符串，因为它们不是对象属性。 循环引用属性:如果对象之间存在循环引用，则 stri">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Question">
+<meta property="og:url" content="https://trumen1219.github.io/2023/01/01/Question/index.html">
 <meta property="og:site_name" content="Trumen&#39;s blog">
+<meta property="og:description" content="object 的哪些属性不能被 stringfy在 JavaScript 中，stringify 方法用于将对象转换为字符串。然而，并非所有对象属性都可以被 stringify 方法转换为字符串。以下是一些不能被 stringify 方法转换为字符串的属性: 函数属性:函数属性不能被 stringify 方法转换为字符串，因为它们不是对象属性。 循环引用属性:如果对象之间存在循环引用，则 stri">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-07-30T14:58:34.000Z">
-<meta property="article:modified_time" content="2023-07-30T08:13:34.980Z">
+<meta property="article:published_time" content="2022-12-31T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-07-23T16:23:55.456Z">
 <meta property="article:author" content="Trumen">
+<meta property="article:tag" content="Question">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>测试文章 - Trumen&#39;s blog</title>
+  <title>Question - Trumen&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -194,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="测试文章"></span>
+            <span id="subtitle" data-typed-text="Question"></span>
           
         </div>
 
@@ -205,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-07-30 22:58" pubdate>
-          2023年7月30日 晚上
+        <time datetime="2023-01-01 00:00" pubdate>
+          2023年1月1日 凌晨
         </time>
       </span>
     
@@ -217,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          1.8k 字
         
       </span>
     
@@ -228,7 +231,7 @@
         
         
         
-          1 分钟
+          16 分钟
         
       </span>
     
@@ -265,12 +268,40 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">测试文章</h1>
+            <h1 id="seo-header">Question</h1>
             
             
               <div class="markdown-body">
                 
-                
+                <h1 id="object-的哪些属性不能被-stringfy"><a href="#object-的哪些属性不能被-stringfy" class="headerlink" title="object 的哪些属性不能被 stringfy"></a>object 的哪些属性不能被 stringfy</h1><p>在 JavaScript 中，stringify 方法用于将对象转换为字符串。然而，并非所有对象属性都可以被 stringify 方法转换为字符串。以下是一些不能被 stringify 方法转换为字符串的属性:</p>
+<p>函数属性:函数属性不能被 stringify 方法转换为字符串，因为它们不是对象属性。</p>
+<p>循环引用属性:如果对象之间存在循环引用，则 stringify 方法将无法正确处理这些属性，因为它们会导致字符串化过程崩溃。</p>
+<p>只读属性:对象中的只读属性不能被 stringify 方法转换为字符串，因为它们不能被修改。</p>
+<p>内置对象属性:例如 Infinity, NaN, Date.prototype.getTime,以及 Array.prototype.join 等内置对象属性不能被 stringify 方法转换为字符串。</p>
+<p>非 5.1 版本的 DOM 对象属性：在早期的 JavaScript 版本中，stringify 方法无法正确处理 DOM 对象属性，因为这些属性不是对象属性。</p>
+<h1 id="如何通过原型修改第三方类库，来实现自己的功能而不破坏类库？手写一下"><a href="#如何通过原型修改第三方类库，来实现自己的功能而不破坏类库？手写一下" class="headerlink" title="如何通过原型修改第三方类库，来实现自己的功能而不破坏类库？手写一下"></a>如何通过原型修改第三方类库，来实现自己的功能而不破坏类库？手写一下</h1><p>要通过原型修改第三方类库，可以遵循以下步骤:</p>
+<p>读取第三方类库的原型链。假设您正在修改 util.js 类库，您可以使用以下代码读取它的原型链:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> util = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;util&#x27;</span>);  <br><span class="hljs-keyword">const</span> p = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;path&#x27;</span>).<span class="hljs-title function_">resolve</span>(__dirname, <span class="hljs-string">&#x27;util.js&#x27;</span>);  <br><span class="hljs-keyword">const</span> utilPrototype = <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">getPrototypeOf</span>(p);  <br></code></pre></td></tr></table></figure>
+<p>创建一个新的实例，该实例将继承第三方类库的原型。您可以使用以下代码创建一个新实例:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> newUtil = <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">create</span>(utilPrototype);  <br></code></pre></td></tr></table></figure>
+<p>修改新实例的原型链，以包含您需要的功能。您可以使用以下代码修改新实例的原型链:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">newUtil.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span> = <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">create</span>(utilPrototype.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>);  <br></code></pre></td></tr></table></figure>
+<p>将新实例返回给第三方类库。您可以使用以下代码将新实例返回给第三方类库:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> util = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;util&#x27;</span>);  <br><span class="hljs-keyword">const</span> newUtil = <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">create</span>(utilPrototype);  <br><span class="hljs-keyword">return</span> newUtil;  <br></code></pre></td></tr></table></figure>
+<p>通过这些步骤，可以修改第三方类库的原型链，以实现您需要的功能，而又不会破坏类库本身。请注意，这些步骤仅适用于您需要修改的类库是使用原型继承的。如果您需要修改基于类的类库，请考虑使用构造函数。</p>
+<h1 id="Vue2-中只能有一个根节点，而-Vue3-中支持多个根节点"><a href="#Vue2-中只能有一个根节点，而-Vue3-中支持多个根节点" class="headerlink" title="Vue2 中只能有一个根节点，而 Vue3 中支持多个根节点"></a>Vue2 中只能有一个根节点，而 Vue3 中支持多个根节点</h1><p>其实本质上 Vue3 每个组件还是一个根节点，因为 DOM 树只能是树状结构的，只是 Vue3 在编译阶段新增了判断，如果当前组件不只一个根元素，就添加一个 fragment 组件把这个多根组件的给包起来，相当于这个组件还是只有一个根节点。而 fragment 跟 keep-alive 一样是一个不会被渲染出来的内置组件<br><template><br>    <div>1</div><br>    <div>2</div><br></template></p>
+<h1 id="JavaScript中栈和堆的区别是什么"><a href="#JavaScript中栈和堆的区别是什么" class="headerlink" title="JavaScript中栈和堆的区别是什么"></a>JavaScript中栈和堆的区别是什么</h1><p>在理解堆与栈这两个概念时，需要放到具体的场景下去理解。一般情况下有两层含义：</p>
+<p>（1）内存操作场景下，堆与栈表示两种内存的管理方式。</p>
+<p>（2）数据结构场景下，堆与栈表示两种常用的数据结构。</p>
+<p>1、内存操作场景</p>
+<p>栈由操作系统自动分配和释放，用于存放简单的数据段，占据固定大小的空间，比如基本数据类型（Number、String、Boolean……）和函数的参数值等。</p>
+<p>堆由开发人员自主分配和释放，若不主动释放，程序结束时由浏览器回收，用于存储引用类型（引用类型的变量实际上保存的不是变量本身，而是指向内存空间的 指针）。</p>
+<p>JavaScript中的数据类型</p>
+<p>2、数据结构场景</p>
+<p>JavaScript存在栈和队列概念，通过数组的方式，模仿实现堆栈。</p>
+<p>栈：栈是一种运算受限的线性表，其限制是指只仅允许在表的一端进行插入和删除操作，这一端被称为栈顶（Top），相对地，把另一端称为栈底（Bottom）。把新元素放到栈顶元素的上面，使之成为新的栈顶元素称作进栈、入栈或压栈（Push）；把栈顶元素删除，使其相邻的元素成为新的栈顶元素称作出栈或退栈（Pop）。通过数组的push()、pop()方法实现栈。</p>
+<p>堆：堆其实是一种优先队列，也就是说队列中存在优先级，比如队列中有很多待执行任务，执行时会根据优先级找优先度最高的先执行。</p>
+
                 
               </div>
             
@@ -278,6 +309,13 @@
             <div>
               <div class="post-metas my-3">
   
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Question/" class="print-no-link">#Question</a>
+      
+    </div>
   
 </div>
 
@@ -287,8 +325,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>测试文章</div>
-      <div>https://trumen1219.github.io/2023/07/30/测试文章/</div>
+      <div>Question</div>
+      <div>https://trumen1219.github.io/2023/01/01/Question/</div>
     </div>
     <div class="license-meta">
       
@@ -300,7 +338,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年7月30日</div>
+          <div>2023年1月1日</div>
         </div>
       
       
@@ -332,12 +370,18 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/2023/02/01/typeScript/" title="TypeScript">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">TypeScript</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/07/30/UniApp/" title="">
-                        <span class="hidden-mobile"></span>
+                      <a href="/2022/11/01/Vue2/" title="Vue2-Study">
+                        <span class="hidden-mobile">Vue2-Study</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

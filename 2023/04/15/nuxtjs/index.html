@@ -1,0 +1,993 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Trumen">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Nuxt3一、Nuxt3简介和开发环境搭建Nuxt3是Vue3全家桶的一员，让你能轻松实现SSR网页的制作。Nuxt3比Nuxt2新增加了12项最新的特性，包括可以完全使用Vue3的所有语法，并且对TypeScript的完美支持。 1.Nuxt3的简介Nuxt3是基于Vue3发布的SSR框架，也是Vue全家桶系列的一员。如果你了解Nuxt2，应该也了解Nuxt3的使命和用途。但是如果你不了解，你需">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nuxt3">
+<meta property="og:url" content="https://trumen1219.github.io/2023/04/15/nuxtjs/index.html">
+<meta property="og:site_name" content="Trumen&#39;s blog">
+<meta property="og:description" content="Nuxt3一、Nuxt3简介和开发环境搭建Nuxt3是Vue3全家桶的一员，让你能轻松实现SSR网页的制作。Nuxt3比Nuxt2新增加了12项最新的特性，包括可以完全使用Vue3的所有语法，并且对TypeScript的完美支持。 1.Nuxt3的简介Nuxt3是基于Vue3发布的SSR框架，也是Vue全家桶系列的一员。如果你了解Nuxt2，应该也了解Nuxt3的使命和用途。但是如果你不了解，你需">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.postimg.cc/kgZBJYFL/image.png">
+<meta property="article:published_time" content="2023-04-14T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-07-23T16:23:50.548Z">
+<meta property="article:author" content="Trumen">
+<meta property="article:tag" content="Nuxt3">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i.postimg.cc/kgZBJYFL/image.png">
+  
+  
+  
+  <title>Nuxt3 - Trumen&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"trumen1219.github.io","root":"/","version":"1.9.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Trumen</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Nuxt3"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-04-15 00:00" pubdate>
+          2023年4月15日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          24k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          198 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Nuxt3</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="Nuxt3"><a href="#Nuxt3" class="headerlink" title="Nuxt3"></a>Nuxt3</h1><h2 id="一、Nuxt3简介和开发环境搭建"><a href="#一、Nuxt3简介和开发环境搭建" class="headerlink" title="一、Nuxt3简介和开发环境搭建"></a>一、Nuxt3简介和开发环境搭建</h2><p>Nuxt3是Vue3全家桶的一员，让你能轻松实现SSR网页的制作。Nuxt3比Nuxt2新增加了12项最新的特性，包括可以完全使用Vue3的所有语法，并且对TypeScript的完美支持。</p>
+<h3 id="1-Nuxt3的简介"><a href="#1-Nuxt3的简介" class="headerlink" title="1.Nuxt3的简介"></a>1.Nuxt3的简介</h3><p>Nuxt3是基于Vue3发布的SSR框架，也是Vue全家桶系列的一员。如果你了解Nuxt2，应该也了解Nuxt3的使命和用途。但是如果你不了解，你需要先知道两个概念。</p>
+<ul>
+<li><p>SPA应用：也就是单页应用，这些多是在客户端的应用，不能进行SEO优化（搜索引擎优化）。</p>
+</li>
+<li><p>SSR应用：在服务端进行渲染，渲染完成后返回给客户端，每个页面有独立的URL，对SEO友好。</p>
+</li>
+</ul>
+<p>所以如果你开发的应用是企业网站、商品展示 、博客这类型的展示型网站，就需要使用搜索引擎喜欢的SSR应用。</p>
+<p>当我们明白这两个概念后，再来看Nuxt3的使命。因为Vue开发的应用默认是单页应用（SPA应用），但如果你想针对于搜索优化，就需要使用Vue的SSR模式开发，而Nuxt3就是Vue的SSR开发的框架。</p>
+<h3 id="2-Nuxt3-的安装"><a href="#2-Nuxt3-的安装" class="headerlink" title="2.Nuxt3 的安装"></a>2.Nuxt3 的安装</h3><p>安装node</p>
+<p>安装vue</p>
+<p>创建一个nuxt项目：<strong>npx nuxi init nuxt3-test</strong></p>
+<p>注意：npx是npm从5.2版开始增加的命令，所以说你的 npm 最小版本也要是5.2版本。查看npm版本的命令如下。</p>
+<p>npm -v</p>
+<p>Nuxt3安装成功页面 上面这段提示，也告诉我们了接下来的三个步骤。</p>
+<p><strong>cd nuxt3-test</strong></p>
+<p><strong>npm install</strong>来安装项目依赖包。</p>
+<p><strong>npm run dev</strong>来运行项目。</p>
+<h3 id="3-Nuxt3的优势介绍"><a href="#3-Nuxt3的优势介绍" class="headerlink" title="3.Nuxt3的优势介绍"></a>3.Nuxt3的优势介绍</h3><p>当我们动手操作完了，我们再简单介绍一下Nuxt3对比Nuxt2的优势或者说作了那些改进。</p>
+<p>更轻量：以现代浏览器为基础的情况下，服务器部署和客户端产物最多减小75倍。</p>
+<p>更快：用动态服务端代码来优化冷启动。</p>
+<p>Hybird：增量动态生成和其他高级模式现在都成为可能。</p>
+<p>Suspense: 导航前后可在任何组件中获取数据。</p>
+<p>Composition API : 使用Composition API 和 Nuxt3的composables 实现真正的可复用性。</p>
+<p>Nuxt CLI ： 权限的零依赖体验，助你轻松搭建项目和集成模块。</p>
+<p>Nuxt Devtools ：专属调试工具，更多的信息和快速修复，在浏览器中高效工作。</p>
+<p>Nuxt Kit ：全新的基于 TypeScript 和跨版本兼容的模块开发。</p>
+<p>Webpack5 ： 更快的构建速度和更小的构建包，并且零配置。</p>
+<p>Vite：用Vite作为你的打包器，体验轻量级的快速HMR。</p>
+<p>Vue3 ： 完全支持Vue3语法，这一点特别关键。</p>
+<p>TypeScript：由原生TypeScript和ESM构成，没有额外配置步骤。</p>
+<h2 id="二、-Nuxt3的基础目录结构"><a href="#二、-Nuxt3的基础目录结构" class="headerlink" title="二、 Nuxt3的基础目录结构"></a>二、 Nuxt3的基础目录结构</h2><p>Nuxt3的目录结构</p>
+<p>默认的项目里就如下几个文件和目录</p>
+<ul>
+<li>.nuxt               &#x2F;&#x2F; 自动生成的目录，用于展示结果</li>
+<li>node_modules        &#x2F;&#x2F; 项目依赖包存放目录</li>
+<li>.gitignore          &#x2F;&#x2F; Git的配置目录，比如一些文件不用Git管理就可以在这个文件中配置</li>
+<li>app.vue             &#x2F;&#x2F; 项目入口文件，你可以在这里配置路由的出口</li>
+<li>nuxt.config.ts      &#x2F;&#x2F; nuxt项目的配置文件 ，这个里边可以配置Nuxt项目的方方面面</li>
+<li>package-lock.json   &#x2F;&#x2F; 锁定安装时包的版本，以保证其他人在 npm install时和你保持一致</li>
+<li>package.json        &#x2F;&#x2F; 包的配置文件和项目的启动调式命令配置</li>
+<li>README.md           &#x2F;&#x2F; 项目的说明文件</li>
+<li>tsconfig.json       &#x2F;&#x2F; TypeScript的配置文件</li>
+</ul>
+<p>随着我们的开发目录也会越来越多，比如常用的还有下面三个目录。</p>
+<ul>
+<li>pages               &#x2F;&#x2F; 开发的页面目录</li>
+<li>components          &#x2F;&#x2F; 组件目录</li>
+<li>assets              &#x2F;&#x2F; 静态资源目录</li>
+<li>layouts             &#x2F;&#x2F; 项目布局目录</li>
+</ul>
+<h2 id="三、编写Hello-World程序"><a href="#三、编写Hello-World程序" class="headerlink" title="三、编写Hello World程序"></a>三、编写Hello World程序</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;template&gt;<br>  &lt;div&gt;<br>    &lt;NuxtWelcome /&gt;<br>  &lt;/div&gt;<br>&lt;/template&gt;<br></code></pre></td></tr></table></figure>
+<p>其中**<NuxtWelcome />**就是一个框架自带的组件，我们直接删除就可以，不用纠结删除这个组件。</p>
+<p>删除后，在 \components 目录下新建一个文件，叫做HelloWorld.vue 然后编写下面的代码。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;template&gt;<br>  &lt;div class=&quot;&quot;&gt;<br>    &lt;h1&gt;Hello World&lt;/h1&gt;<br>  &lt;/div&gt;<br>&lt;/template&gt;<br>&lt;script setup&gt;<br>import &#123;&#125; from &quot;vue&quot;;<br>&lt;/script&gt;<br>&lt;style scoped&gt;&lt;/style&gt;<br></code></pre></td></tr></table></figure>
+
+<p>然后再回到app.vue文件中直接写入这个 HelloWorld组件。【注意这里组件的引入方式是通过小写并连接起来引入的】</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;template&gt;<br>  &lt;div&gt;<br>    &lt;hello-world /&gt;<br>  &lt;/div&gt;<br>&lt;/template&gt;<br></code></pre></td></tr></table></figure>
+
+<h2 id="四、Nuxt3页面和约定路由的使用"><a href="#四、Nuxt3页面和约定路由的使用" class="headerlink" title="四、Nuxt3页面和约定路由的使用"></a>四、Nuxt3页面和约定路由的使用</h2><h3 id="1、Nuxt3创建页面"><a href="#1、Nuxt3创建页面" class="headerlink" title="1、Nuxt3创建页面"></a>1、Nuxt3创建页面</h3><p>Nuxt3的一个特点就是约定式开发，讲究的是约定大于配置。用Nuxt3就要遵守Nuxt3的规则一样，框架都已经为你做好各种配置了，你只要遵守规则就可以了。 </p>
+<p>当你了解什么是“约定式开发”后，再来看如何创建一个Nuxt3的页面。</p>
+<p>我们按照框架约定新建一个pages 的文件夹，然后新建一个文件Demo1.vue 。注意，上面这两个步骤，就是约定开发，你必须这么作，否则框架就不认为你是一个页面。</p>
+<ul>
+<li>VSCode自定义代码片段</li>
+</ul>
+<p>这里再分享一个小技巧，比如每次新建一个页面，都会有很多相同的代码，这时候就可以使用VSCode的用户代码片段 功能。</p>
+<p>这个功能可以在VSCode界面的左下角的齿轮图标中找到。 找到后新建一个Nuxt的片段就可以了。如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&#123;<br>  <span class="hljs-string">&quot;nuxt&quot;</span>:&#123;<br>    <span class="hljs-string">&quot;prefix&quot;</span>:<span class="hljs-string">&quot;nuxt&quot;</span>,<br>    <span class="hljs-string">&quot;body&quot;</span>:[<br>        <span class="hljs-string">&quot;&lt;template&gt;&quot;</span>,<br>            <span class="hljs-string">&quot;  &lt;div class=\&quot;\&quot;&gt;&lt;/div&gt;&quot;</span>,<br>        <span class="hljs-string">&quot;&lt;/template&gt;&quot;</span>,<br>        <span class="hljs-string">&quot;&quot;</span>,<br>        <span class="hljs-string">&quot;&lt;script setup&gt;&quot;</span>,<br>        <span class="hljs-string">&quot;import &#123;&#125; from &#x27;vue&#x27;&quot;</span>,<br>        <span class="hljs-string">&quot;&lt;/script&gt;&quot;</span>,<br>        <span class="hljs-string">&quot;&quot;</span>,<br>        <span class="hljs-string">&quot;&lt;style scoped&gt;&lt;/style&gt;&quot;</span>,<br>    ],<br>    <span class="hljs-string">&quot;description&quot;</span>:<span class="hljs-string">&quot;nuxt3 Components&quot;</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>新建好之后，我们再次回到VSCode中的Demo1.vue页面，直接输入 nuxt 回车后，就会生成一段代码了。</p>
+<p><a target="_blank" rel="noopener" href="https://postimg.cc/rD18gJH9"><img src="https://i.postimg.cc/kgZBJYFL/image.png" srcset="/img/loading.gif" lazyload alt="image.png"></a></p>
+<p>新的页面建好了，再补充一下页面内容。</p>
+<template>
+  <div class=""><h1>Demo01</h1></div>
+</template>
+
+<p><strong>约定路由</strong></p>
+<p>当一个页面建立好以后，如何能访问到这个页面 ? 也是一个不能忽视的问题。既然是约定开发，肯定是有一个约定的。</p>
+<p> 首先第一步，我们需要在项目根目录下的app.vue文件中，使用 <Nuxtpage> 标签，这就相当于路由的出口了。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;template&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">hello-world</span> /&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">NuxtPage</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">NuxtPage</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>&lt;/template&gt;<br></code></pre></td></tr></table></figure>
+<p>比如我们现在这个页面，想要访问到，其实只要在地址栏输入下面的地址就可以了。</p>
+<p><a target="_blank" rel="noopener" href="http://localhost:3000/demo1">http://localhost:3000/demo1</a></p>
+<p>但是如果你使用原来的<a href="http://localhost:3000就又访问，会显示404，这时候你可以新建一个">http://localhost:3000就又访问，会显示404，这时候你可以新建一个</a> 在pages文件夹下index.vue 页面。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;template&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Index Page<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>&lt;/template&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">import</span> &#123;&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">scoped</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+<p>这时候在访问<a href="http://localhost:3000就可以访问到页面了。">http://localhost:3000就可以访问到页面了。</a></p>
+<h3 id="2、NuxtLink标签的使用"><a href="#2、NuxtLink标签的使用" class="headerlink" title="2、NuxtLink标签的使用"></a>2、NuxtLink标签的使用</h3><p>Nuxt框架不鼓励我们使用<a> 标签进行跳转，而是使用<NuxtLink></NuxtLink>标签进行跳转。比如我们要从 index.vue页面跳转到demo1.vue页面，就可以使用下面的代码进行跳转。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;template&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Index Page<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">NuxtLink</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;/demo1&quot;</span>&gt;</span>Demo1.vue<span class="hljs-tag">&lt;/<span class="hljs-name">NuxtLink</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>&lt;/template&gt;<br></code></pre></td></tr></table></figure>
+
+<p>这个页面写完后，可以到浏览器中预览一下效果。基本就可以看到NuxtLink标签的作用了。这节课我们学习了三个知识，我们进行总结一下。</p>
+<p>Nuxt3是约定大于配置的开发。</p>
+<p>VSCode 自定义用户代码片段的方法</p>
+<p>约定路由和<NuxtLink>标签的使用方法</p>
+<h2 id="五、Nuxt3动态路由的使用"><a href="#五、Nuxt3动态路由的使用" class="headerlink" title="五、Nuxt3动态路由的使用"></a>五、Nuxt3动态路由的使用</h2><p>单参数的传递</p>
+<p>单参数的传递只要在页面的文件名中用[ ]扩起来就可以了。比如新建一个页面，叫做 demo2-[id].vue。</p>
+<p>-| pages&#x2F;<br>—| index.vue<br>—| demo2-[id].vue</p>
+<p>也就是说我们使用[ ]的形式就可以设置一个页面的传参。参数接收可以使用 $route.params.id的形式。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;template&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span>获取的id:&#123;&#123; $route.params.id &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>&lt;/template&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">import</span> &#123; &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">scoped</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<p>我们去首页制作一个链接。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;template&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Index Page<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">NuxtLink</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;/demo1&quot;</span>&gt;</span>Demo1.vue<span class="hljs-tag">&lt;/<span class="hljs-name">NuxtLink</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">NuxtLink</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;/demo2-38&quot;</span>&gt;</span>Demo2.vue<span class="hljs-tag">&lt;/<span class="hljs-name">NuxtLink</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>&lt;/template&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">import</span> &#123;&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">scoped</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<p>这时候再到浏览器预览一下，调整后能得到ID，可以了。</p>
+<p>在script里获取参数</p>
+<p>上面只是在页面中获取了参数，实际作用并不大。工作中获取参数后，都要进行业务逻辑的处理，所以在<code>&lt;script&gt;</code>标签里获取参数，才是真实的开发需求。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;template&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span>获取的id:&#123;&#123; id &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>&lt;/template&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">import</span> &#123; ref &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;</span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">const</span> route = <span class="hljs-title function_">useRoute</span>();</span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">const</span> id = <span class="hljs-title function_">ref</span>(route.<span class="hljs-property">params</span>.<span class="hljs-property">id</span>);</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">scoped</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<p>上面的代码通过useRoute( ) 获得了route,然后通过ref让template可用(id)。</p>
+<p>多参数的获取</p>
+<p>有人说是不是再写一个括号就可以传递多一个参数了，这种是不行的。如果你要传递是两个参数。你需要建立一个文件夹，然后在文件夹上使用[ ]来确定参数。比如我们要传递一个name的参数过来。就需要把目录和文件建立成这样。</p>
+<p>-|  pages&#x2F;<br>—| index.vue<br>—| goods-[name]&#x2F;<br>—–| demo2-[id].vue<br>然后修改一些demo2-[id].vue的文件，修改获取的参数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;template&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span>获取的id:&#123;&#123; id &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span>获取的name:&#123;&#123; name &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>&lt;/template&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">import</span> &#123; ref &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;</span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">const</span> route = <span class="hljs-title function_">useRoute</span>();</span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">const</span> id = <span class="hljs-title function_">ref</span>(route.<span class="hljs-property">params</span>.<span class="hljs-property">id</span>);</span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">const</span> name = <span class="hljs-title function_">ref</span>(route.<span class="hljs-property">params</span>.<span class="hljs-property">name</span>);</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">scoped</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<p>再到index.vue 修改链接，传递两个参数。</p>
+<p><NuxtLink to="/goods-trumen/demo2-38">Demo2.vue</NuxtLink></p>
+<p>完成后再到浏览器中查看结果，可以看到已经接收到了两个参数。 这节课主要学习了Nuxt3中的动态路由，包括：单参数的传递、多参数的传递和在Script标签里获取参数的方法。</p>
+<h2 id="六、Nuxt3-嵌套路由的使用"><a href="#六、Nuxt3-嵌套路由的使用" class="headerlink" title="六、Nuxt3 嵌套路由的使用"></a>六、Nuxt3 嵌套路由的使用</h2><p>掌握了动态路由后，我们还需要对嵌套路由有所了解。嵌套路由就是路由是两级，但是程序员的页面是一个。也就是说有父级页面，也有子集页面。类似我们的页面嵌套。</p>
+<ul>
+<li><p>如何建立一个嵌套路由?</p>
+</li>
+<li><p>嵌套路由的建立非常容易，用一句话解释为：目录和文件名同名，就制作了一个嵌套路由。</p>
+</li>
+<li><p>制作一个嵌套路由页面一般需要三步：</p>
+</li>
+<li><p>建立嵌套路由的文件夹（约定大于配置）</p>
+</li>
+<li><p>创建和文件夹相同名称的文件（父页面）</p>
+</li>
+<li><p>在新建文件夹下任意创建子页面</p>
+</li>
+</ul>
+<p>|–pages<br>|—-parent&#x2F;<br>|——child.vue<br>|—-parent.vue</p>
+<p>先在\pages目录下，新建一个文件夹 parent ，然后在pages目录下再建立一个parent.vue的文件。文件建立好之后，编写代码。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;template&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span>Parent Page<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>  &lt;!-- 子页面的出口--&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">NuxtChild</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">NuxtChild</span>&gt;</span></span><br>&lt;/template&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">import</span> &#123;&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">scoped</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<p>这里的<NuxtChild>就是嵌套路由的出口，所以如果是嵌套路由，就必须要加上这个标签。这是Nuxt的一个内置组件。 有了父页面之后，在新建的parent文件夹下，再建立一个 child.vue子页面。然后编写代码。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;template&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span>Child Page<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>&lt;/template&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">import</span> &#123;&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">scoped</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<p>然后为了看到效果，我们还需要一个路由链接过来。直接到index.vue增加路由链接。</p>
+<p><NuxtLink to="/parent/child">&#x2F;parent&#x2F;child</NuxtLink><br /></p>
+<p>多个子页面的制作</p>
+<p>在\pages\parent\文件夹下面再新建一个文件 two.vue。然后编写代码。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;template&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span>Two Page<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>&lt;/template&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">import</span> &#123;&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">scoped</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<p>写完后再到index.vue页面，增加导航路由。</p>
+<p><NuxtLink to="/parent/two">&#x2F;parent&#x2F;two</NuxtLink><br /></p>
+<p>然后去浏览器查看结果。</p>
+<h2 id="七、-Nuxt3布局模板-让开发高效起来"><a href="#七、-Nuxt3布局模板-让开发高效起来" class="headerlink" title="七、 Nuxt3布局模板 让开发高效起来"></a>七、 Nuxt3布局模板 让开发高效起来</h2><p>布局模板的作用就是你先定义好一个布局页面，然后提取一些通用的UI或代码到可重用的模板中，提高代码复用性，从而降低代码的复杂度，让代码重用性提高。</p>
+<p>简单说就是把一些通用的UI代码代码提出来，然后放在一个模板里，使用这个模板的每个页面都拥有这些代码UI了。</p>
+<p><strong>创建布局模板和使用模板</strong></p>
+<p>比如现在新建一个文件夹\layouts然后再里边写编写一个 defalut.vue文件，代码如下。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;template&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">    我是布局模板，default.vue</span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">slot</span> /&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>&lt;/template&gt;<br></code></pre></td></tr></table></figure>
+<p>上边这段代码就相当于你创建了一个布局模板。有了这个模板后，可以在任何你想要使用的页面中用<NuxtLayout>标签为页面赋予模板中的内容。比如我们想在每个页面中都赋予这个模板中的内容，就可以在 app.vue 页面中使用这个标签。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;template&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">NuxtLayout</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;default&quot;</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">hello-world</span> /&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">NuxtPage</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">NuxtPage</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">NuxtLayout</span>&gt;</span></span><br>&lt;/template&gt;<br></code></pre></td></tr></table></figure>
+
+<p>这样每个页面都会有布局模板中的效果，因为app.vue是每个页面的出口。</p>
+<p><strong>增加多个插槽</strong></p>
+<p>修改default.vue布局模板，增加第二个插槽，一个叫做one，一个叫做two。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;template&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">    我是布局模板，default.vue</span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">slot</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;one&quot;</span> /&gt;</span></span><br><span class="language-xml">    ---------</span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">slot</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;two&quot;</span> /&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>&lt;/template&gt;<br></code></pre></td></tr></table></figure>
+
+<p>这样编写，一个模板中就有了两个插槽，你可以在页面中通过&lt;template #xxx&gt;的形式来指定对应的模板插槽。 在index.vue中使用多个 <template> 配合模板实现多插槽。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;template&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">NuxtLayout</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;default&quot;</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">one</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Index Page<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">NuxtLink</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;/demo1&quot;</span>&gt;</span>Demo1.vue<span class="hljs-tag">&lt;/<span class="hljs-name">NuxtLink</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">NuxtLink</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;/goods-jspang/demo2-38&quot;</span>&gt;</span>Demo2.vue<span class="hljs-tag">&lt;/<span class="hljs-name">NuxtLink</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">NuxtLink</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;/parent/child&quot;</span>&gt;</span>/parent/child<span class="hljs-tag">&lt;/<span class="hljs-name">NuxtLink</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">NuxtLink</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;/parent/two&quot;</span>&gt;</span>/parent/two<span class="hljs-tag">&lt;/<span class="hljs-name">NuxtLink</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">two</span>&gt;</span> 我是two中的内容 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">NuxtLayout</span>&gt;</span></span><br>&lt;/template&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">import</span> &#123;&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">scoped</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<p>注意上面的页面就精确的对应了模板的插槽。如果页面都非常相似，可以好好的利用这个模板布局。</p>
+<p>这个插槽也可以是多个，只要名字对应正确就可以实现。</p>
+<p>个人小感想:</p>
+<p>布局模板是非常好的一个创意，布局模板再加上组件化，可以大大提高代码的维护性和复用性。所以你想写出漂亮的代码，可以从这两方面多专研。</p>
+<h2 id="八、-Nuxt3-组件的编写"><a href="#八、-Nuxt3-组件的编写" class="headerlink" title="八、 Nuxt3 组件的编写"></a>八、 Nuxt3 组件的编写</h2><p>Nuxt3中创建一个组件</p>
+<p>Nuxt3的所有自定义组件，必须写在<code>components</code>目录下，写在这个目录下他会自动加载到页面中，而不用我们自己不断的重复引入到每个页面中。</p>
+<p>比如现在要创建一个<TheFooter/> 的组件，我们在项目根目录建立一个文件夹<code>components</code> ，然后建立一个文件<code>TheFooter.vue</code>。</p>
+<p>&#x2F;&#x2F;目录结构<br>-|components<br>—-|TheFooter.vue</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;template&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>The Footer Box<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br>&lt;/template&gt;<br></code></pre></td></tr></table></figure>
+
+<p>这段代码只有一个<code>&lt;h1&gt;</code> 标签，在页面中显示出了 The Footer Box 。写好组件后，你可以到任何的页面（page）中进行使用。比如在首页使用他们。 打开<code>/pages/Index.vue</code>页面，然后在最下面加入这个组件。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;template&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">NuxtLayout</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;default&quot;</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">one</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Index Page<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">NuxtLink</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;/demo1&quot;</span>&gt;</span>Demo1.vue<span class="hljs-tag">&lt;/<span class="hljs-name">NuxtLink</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">NuxtLink</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;/goods-jspang/demo2-38&quot;</span>&gt;</span>Demo2.vue<span class="hljs-tag">&lt;/<span class="hljs-name">NuxtLink</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">NuxtLink</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;/parent/child&quot;</span>&gt;</span>/parent/child<span class="hljs-tag">&lt;/<span class="hljs-name">NuxtLink</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">NuxtLink</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;/parent/two&quot;</span>&gt;</span>/parent/two<span class="hljs-tag">&lt;/<span class="hljs-name">NuxtLink</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">two</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>我是two中的内容<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">TheFooter</span> /&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">NuxtLayout</span>&gt;</span></span><br>&lt;/template&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">import</span> &#123;&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">scoped</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<p>这时候你到浏览器中就可以看到我们刚写的<code>&lt;TheFooter/&gt;</code> 组件起作用了。</p>
+<p>在布局模板中使用组件</p>
+<p>底部，其实是每个页面都需要包括的组件，拿我们可以直接把这个组件放到<code>布局模板</code>里是非常合适的选择。在布局模板中使用组件和在普通页面中使用组件没有太大的差别，直接使用就可以了。</p>
+<p>这里我们就在<code>\layouts\default.vue</code>布局模板中使用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;template&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">    我是布局模板，default.vue</span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">slot</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;one&quot;</span> /&gt;</span></span><br><span class="language-xml">    ---------<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">slot</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;two&quot;</span> /&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">TheFooter</span> /&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>&lt;/template&gt;<br></code></pre></td></tr></table></figure>
+
+<p>这时候每个使用了<code>default.vue</code>这个布局模板的页面就会有<code>&lt;TheFooter /&gt;</code>这个组件的存在了。</p>
+<p>组件名称的约定</p>
+<p>我说了很多会了Nuxt3是约定大于配置的开发模式，所以我们要了解Nuxt3框架对于组件名字的约定。比如按照以前的经验，这个<code>&lt;TheFooter/&gt;</code> 组件，习惯写成 <the-footer /> 我们测试一下，如果你这样写在页面里也是生效的。</p>
+<p>&#x2F;layouts&#x2F;default.vue</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;template&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">    我是布局模板，default.vue</span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">slot</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;one&quot;</span> /&gt;</span></span><br><span class="language-xml">    ---------<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">slot</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;two&quot;</span> /&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">TheFooter</span> /&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">the-footer</span> /&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>&lt;/template&gt;<br></code></pre></td></tr></table></figure>
+
+<p>但是个人建议，你尽量使用大写，因为这样可以区分那些是自定义组件，那些是原生的HTML标签。</p>
+<p>我说了这是个人建议，但不是必须的。你也可以编写一个<code>the-header.vue</code> 的组件，然后用 <the-header/> 的形式使用这个组件也是完全可以的。</p>
+<p>例如下面的两段代码。 在<code>/components</code>文件夹下面，新建一个页面 <code>the-header.vue</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;template&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>The Header Box<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br>&lt;/template&gt;<br></code></pre></td></tr></table></figure>
+
+<p>然后回到layouts文件夹下的defalut.vue下使用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;template&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">the-header</span> /&gt;</span></span><br><span class="language-xml">    我是布局模板，default.vue</span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">slot</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;one&quot;</span> /&gt;</span></span><br><span class="language-xml">    ---------<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">slot</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;two&quot;</span> /&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">TheFooter</span> /&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">the-footer</span> /&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>&lt;/template&gt;<br></code></pre></td></tr></table></figure>
+
+<p>也是完全可以使用的。由此看来Nuxt3对于组件的使用还是非常方便的，你只要符合自己的习惯就好。</p>
+<p>小节总结：<br>主要简单学习了Nuxt3中组件的创建和使用方法。从学习中可以总结道Nuxt3的组件使用非常方便，不用重复的不断引入，可以使用在页面中，也可以使用在布局模板中。而且对于书写的名字也有很宽泛的随意性。</p>
+<h2 id="九、Nuxt3-多层级组件、懒加载组件的使用"><a href="#九、Nuxt3-多层级组件、懒加载组件的使用" class="headerlink" title="九、Nuxt3-多层级组件、懒加载组件的使用"></a>九、Nuxt3-多层级组件、懒加载组件的使用</h2><h3 id="1-多层级组件的引用"><a href="#1-多层级组件的引用" class="headerlink" title="1.多层级组件的引用"></a>1.多层级组件的引用</h3><p>多层级组件看似好像很复杂，其实多层级组件就是把一个组件放在一个文件夹里。</p>
+<p>在实际工作中组件会非常多，所以会把组件分门别类的放置。那这种有层级的组件，我们要如何引用？</p>
+<p>比如在<code> components</code>文件夹下面，新建一个 <code>test</code>文件夹，然后在test文件夹下面再创建一个 <code>MyButton.vue</code>文件。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;template&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>MyButton<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>&lt;/template&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">import</span> &#123;&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">scoped</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<p>写完这个组件后，最关键的一步，就是在页面里如何引用到这个组件。方法很简单，只要在这个页面的前面加上文件夹的名称就可以了。我们的目录结构如下：</p>
+<p>–|components<br>—-|test<br>——|MyButton.vue</p>
+<p>那引用组件的方法就是这样的。</p>
+<p><strong><TestMyButton /></strong></p>
+<p>如果有很多层级，我们也依照这个规律，加入前缀就可以实现多层级组件的引用了。</p>
+<p>这种设计的目的是让框架可以应对复杂项目和多组件的需求，让我们的组件更加有条例。</p>
+<h3 id="2-组件的懒加载"><a href="#2-组件的懒加载" class="headerlink" title="2.组件的懒加载"></a>2.组件的懒加载</h3><p>如果在组件名前面加上Lazy前缀，则可以按需懒加载该组件。懒加载组件的目的是在项目打包的时候包更小。简单理解可以理解为只有在组件显示在页面上时才进行加载。</p>
+<p> 比如我们现在要做一个文本，这个文本只有在<code> show</code>的值为 true的时候才会显示。然后其他时候他不显示。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;lazyText v-<span class="hljs-keyword">if</span>=<span class="hljs-string">&quot;show&quot;</span> /&gt;<br></code></pre></td></tr></table></figure>
+<p>这时候我们就可以使用懒加载组件。如果不总是需要该组件，这将特别有用。</p>
+<p>在<code>components</code>文件夹下，新建一个 <code>LazyText.vue</code>的文件，然后编写代码如下。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;template&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span>Lazy Text Content<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>&lt;/template&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">import</span> &#123;&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">scoped</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<p>有了组件之后，我们在新建一个页面<code>demo2.vue</code>。然后用一个按钮来控制这个组件的显示和隐藏。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;template&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">lazyText</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;show&quot;</span> /&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;handleClick&quot;</span>&gt;</span>显示/隐藏<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>&lt;/template&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">import</span> &#123; ref &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;</span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">const</span> show = <span class="hljs-title function_">ref</span>(<span class="hljs-literal">false</span>);</span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">const</span> <span class="hljs-title function_">handleClick</span> = (<span class="hljs-params"></span>) =&gt; &#123;</span></span><br><span class="language-javascript"><span class="language-xml">  show.<span class="hljs-property">value</span> = show.<span class="hljs-property">value</span> ? <span class="hljs-literal">false</span> : <span class="hljs-literal">true</span>;</span></span><br><span class="language-javascript"><span class="language-xml">&#125;;</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">scoped</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<p>然后到浏览器看一下效果，这种就是懒加载组件的使用。</p>
+<p>这种组件也可以用来优化页面的打开速度，比如你有一个几百行的长列表。直接加载会给服务器造成很大压力，如果在其他内容已经完成后，过1-2秒再加载这个长列表，就会给用户很好的体验。也会减少服务器的压力。</p>
+<h2 id="十、Nuxt3-模块化代码-Composable文件夹的试用"><a href="#十、Nuxt3-模块化代码-Composable文件夹的试用" class="headerlink" title="十、Nuxt3 模块化代码 Composable文件夹的试用"></a>十、Nuxt3 模块化代码 Composable文件夹的试用</h2><p>在开发中我们经常会有一些通用的业务逻辑代码，需要模块化管理，这时候就可以试用Composable 这个文件夹来编写。</p>
+<p>比如我们常用的显示当前时间，这种常用的通用代码，就可以编写成一个单独的代码段，然后在每个页面进行使用。</p>
+<p>Composable中创建time.ts的编写</p>
+<p>新建一个文件夹composables 然后在文件夹里边，新建一个文件time.ts ，然后编写下面的代码。这段代码你一定编写过，所以就不给大家讲解里边的具体含义了。你可以直接复制这段代码。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">export</span>  <span class="hljs-keyword">const</span> <span class="hljs-title function_">getTime</span>=(<span class="hljs-params"></span>)=&gt;&#123;<br>  <span class="hljs-keyword">const</span> timezone = <span class="hljs-number">8</span>;<br>  <span class="hljs-keyword">const</span> offset_GMT = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>().<span class="hljs-title function_">getTimezoneOffset</span>();<br>  <span class="hljs-keyword">const</span> nowDate = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>().<span class="hljs-title function_">getTime</span>();<br>  <span class="hljs-keyword">const</span> today = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(nowDate + offset_GMT * <span class="hljs-number">60</span> * <span class="hljs-number">1000</span> + timezone * <span class="hljs-number">60</span> * <span class="hljs-number">60</span> * <span class="hljs-number">1000</span>);<br>  <span class="hljs-keyword">const</span> date = today.<span class="hljs-title function_">getFullYear</span>() + <span class="hljs-string">&quot;-&quot;</span> + <span class="hljs-title function_">twoDigits</span>(today.<span class="hljs-title function_">getMonth</span>() + <span class="hljs-number">1</span>) + <span class="hljs-string">&quot;-&quot;</span> + <span class="hljs-title function_">twoDigits</span>(today.<span class="hljs-title function_">getDate</span>());<br>  <span class="hljs-keyword">const</span> time = <span class="hljs-title function_">twoDigits</span>(today.<span class="hljs-title function_">getHours</span>()) + <span class="hljs-string">&quot;:&quot;</span> + <span class="hljs-title function_">twoDigits</span>(today.<span class="hljs-title function_">getMinutes</span>()) + <span class="hljs-string">&quot;:&quot;</span> + <span class="hljs-title function_">twoDigits</span>(today.<span class="hljs-title function_">getSeconds</span>());<br>  <span class="hljs-keyword">const</span> timeString =<span class="hljs-string">&#x27;当前时间：&#x27;</span> + date + <span class="hljs-string">&#x27;  &#x27;</span> + time;<br>  <span class="hljs-keyword">return</span> timeString;<br>&#125;<br><span class="hljs-keyword">function</span> <span class="hljs-title function_">twoDigits</span>(<span class="hljs-params">val</span>) &#123;<br>  <span class="hljs-keyword">if</span> (val &lt; <span class="hljs-number">10</span>) <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;0&quot;</span> + val;<br>  <span class="hljs-keyword">return</span> val;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>写完之后，如何在页面中使用呢？在pages 文件夹下面，新建一个\pages\demo3.vue 的文件，然后你就可以直接在这个页面中使用刚才写的获得时间的方法了。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;template&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span>&#123;&#123; time &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>&lt;/template&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">import</span> &#123; ref &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;</span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">const</span> time = <span class="hljs-title function_">ref</span>(<span class="hljs-title function_">getTime</span>());</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">scoped</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<p>打开浏览器就可以获得当前时间了。 你可以把任何你在项目中经常使用的代码，封装到这个文件夹里，实现代码的复用。这个文件夹的功能和组件很相似，只是组件是UI部分的代码复用，而这个是业务逻辑代码的复用。</p>
+<ul>
+<li>composables的引入规则</li>
+</ul>
+<p>composables 文件夹的引入规则是，只有顶层文件会被引入。也就是说我们如果在这个文件下再新建一个文件夹，是不会被引入到页面中实现代码复用的。 比如下面的文件格式就没办法引入。</p>
+<p>–|composables<br>—-|test<br>——|test.ts</p>
+<p>但是有一种是例外的，就是我们可以写成下面的这种形式。</p>
+<p>–|composables<br>—-|test<br>——|index.ts</p>
+<p>我们这里测试一下，新建一个\test 文件夹，然后在它的下面再创建一个index.ts 文件。写入下面的代码。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-title function_">test</span> = (<span class="hljs-params"></span>)=&gt;&#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;trumen.com&#x27;</span>)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>然后回到Demo3.vue 页面使用test( ) 方法，结果是可以使用这个方法的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;template&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span>&#123;&#123; time &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>&lt;/template&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">import</span> &#123; ref &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;</span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">const</span> time = <span class="hljs-title function_">ref</span>(<span class="hljs-title function_">getTime</span>());</span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-title function_">test</span>();</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">scoped</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<p>我们在\test 文件夹下面，再新建一个test.ts 文件，然后编写代码，如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-title function_">testTwo</span> = (<span class="hljs-params"></span>)=&gt;&#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;hello&#x27;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>你会发现，这种形式是不能直接引入到页面当中进行使用的，会直接报错<code>testTwo is not defined</code>.也就是找不到这个方法。</p>
+<p>小节总结</p>
+<p>这节主要学习了Nuxt3中业务逻辑代码的复用。你可以把每个页面都使用的代码放在composables 文件夹中，然后按需使用就好。</p>
+<p>但是也要有个度，虽没有依据，如果这种方法多起来，会造成页面性能的下降。毕竟每个方法都会引导页面中。</p>
+<h2 id="十一、Nuxt3中的数据请求"><a href="#十一、Nuxt3中的数据请求" class="headerlink" title="十一、Nuxt3中的数据请求"></a>十一、Nuxt3中的数据请求</h2><p>Nuxt3中提供了四种方法：<strong>useAsyncData</strong> 、<strong>useFetch</strong> 、<strong>useLazyFetch</strong> 、<strong>useLazyAsyncData</strong> 。</p>
+<p>提供的四个方法，都是获取后台数据的，但是使用场景和使用方法有所不同。</p>
+<p>本节练习使用的请求URL：<a target="_blank" rel="noopener" href="http://121.36.81.61:8000/getTenArticleList">http://121.36.81.61:8000/getTenArticleList</a> （可以获得博客上的10条文章目录）</p>
+<h3 id="1、useAsyncData的使用"><a href="#1、useAsyncData的使用" class="headerlink" title="1、useAsyncData的使用"></a>1、<strong>useAsyncData的使用</strong></h3><p>使用useAsyncData 异步获取数据，它可以使用在页面中，组件和插件中。我们先通过这个方法来获取一下服务端的数据。 在pages文件夹下，新建一个页面，然后编写下面的代码。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;template&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span>&#123;&#123;list&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>&lt;/template&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">import</span> &#123;&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;</span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">const</span> res = <span class="hljs-keyword">await</span> <span class="hljs-title function_">useAsyncData</span>(<span class="hljs-string">&quot;getList&quot;</span>, <span class="hljs-function">() =&gt;</span></span></span><br><span class="language-javascript"><span class="language-xml">  $fetch(<span class="hljs-string">&quot;http://121.36.81.61:8000/getTenArticleList&quot;</span>)</span></span><br><span class="language-javascript"><span class="language-xml">);</span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">const</span> list = <span class="hljs-title function_">ref</span>(res)</span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-comment">//const list = ref(res.data._rawValue.data)得到数据</span></span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">scoped</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></span><br><span class="hljs-comment">//$fetch( )方法是nuxt3提供的内置方法，我们直接可以使用。</span><br></code></pre></td></tr></table></figure>
+
+<p>写完后，可以打开浏览器的调试面包，在终端里可以看到返回值是一个对象，对象里有四个属性。</p>
+<ul>
+<li><p>data: 返回的数据，我们需要的服务器数据就在这个属性里。</p>
+</li>
+<li><p>error：是否存在错误，如果存在错误，可以在这个属性中获得，返回的是一个对象。</p>
+</li>
+<li><p>pending：这次请求的状态，返回的是布尔值。</p>
+</li>
+<li><p>refresh：这个返回的是一个函数，可以用来刷新 handler函数返回的数据。</p>
+<ul>
+<li><p>这个方法的一个特点是，它可以进行很多选项的配置，但是在真实开发中，其实我们用的不多。</p>
+</li>
+<li><p>最常用的就是lazy 选项，比如我们设置成true 就是需要数据都返回后，才会显示出来 ，简单说就是会阻塞页面。默认是false。</p>
+</li>
+<li><p>比如要设置lazy为true，就可以这样写。因为我们的数据太少，所以基本看不出来效果。</p>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> res = <span class="hljs-keyword">await</span> <span class="hljs-title function_">useAsyncData</span>(<br>  <span class="hljs-string">&quot;getList&quot;</span>,<br>  <span class="hljs-function">() =&gt;</span> $fetch(<span class="hljs-string">&quot;http://121.36.81.61:8000/getTenArticleList&quot;</span>),<br>  &#123;<br>    <span class="hljs-attr">lazy</span>: <span class="hljs-literal">true</span>,<br>  &#125;<br>);<br></code></pre></td></tr></table></figure>
+<p>这个可配置的选项option 其实还是挺多的，有七项。如果想详细了解的，可以到官方去看一下，地址：</p>
+<p><a target="_blank" rel="noopener" href="https://v3.nuxtjs.org/api/composables/use-async-data">https://v3.nuxtjs.org/api/composables/use-async-data</a></p>
+<p>但这些选项在开发中很少被配置，一般都使用默认值。所以Nuxt3又提供了一个简单的方法useFetch 。</p>
+<h3 id="1、useFetch的使用"><a href="#1、useFetch的使用" class="headerlink" title="1、useFetch的使用"></a>1、<strong>useFetch</strong>的使用</h3><p>useFetch 可以理解为所有的都选择默认配置的useAsyncData 方法。比如还是上面的请求，我们就可以写成下面的形式。</p>
+<p>const res &#x3D; await useFetch(“<a target="_blank" rel="noopener" href="http://121.36.81.61:8000/getTenArticleList">http://121.36.81.61:8000/getTenArticleList</a>“);</p>
+<p>这样我们依然可以获取数据，当然也是可以传递参数和配置请求方法的。比如我们要设置请求方法是get，传递id是1, 就可以写成下面的形式。</p>
+<p>const res &#x3D; await useFetch(“<a target="_blank" rel="noopener" href="http://121.36.81.61:8000/getTenArticleList">http://121.36.81.61:8000/getTenArticleList</a>“, {<br>  method: “get”,<br>  id: 1,<br>});</p>
+<p>现在我们要把获取到的数据，显示在页面上。修改一下程序，定义变量，然后用ref来赋值就可以了。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;template&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span>&#123;&#123; list &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>&lt;/template&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">import</span> &#123; ref &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;</span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">const</span> res = <span class="hljs-keyword">await</span> <span class="hljs-title function_">useFetch</span>(<span class="hljs-string">&quot;http://121.36.81.61:8000/getTenArticleList&quot;</span>);</span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">const</span> list = <span class="hljs-title function_">ref</span>(res.<span class="hljs-property">data</span>.<span class="hljs-property">_rawValue</span>.<span class="hljs-property">data</span>);</span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">scoped</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+<p>这样就可以在页面上看到这些从后端得到的数据了。在实际开发中，我们会把这个数组循环输出，并制作一个精美的列表。</p>
+<p>当我们会使用了useAsyncData 和 useFetch 这两个方法后，useLazyAsyncData 和useLazyFetch 也自然会使用了。他们只是把配置选项中的Lazy 设置成了true， 也就是会阻塞页面。 </p>
+<h2 id="十二、Nuxt3-middleware路由中间件"><a href="#十二、Nuxt3-middleware路由中间件" class="headerlink" title="十二、Nuxt3 middleware路由中间件"></a>十二、Nuxt3 middleware路由中间件</h2><p>Nuxt3提供了路由中间件的概念，你可以在整个应用使用它，目的是在导航到某一个页面之前，执行一些代码。最常见的路由守卫就可以用这个实现。</p>
+<h3 id="1-中间件的基本格式"><a href="#1-中间件的基本格式" class="headerlink" title="1.中间件的基本格式"></a>1.中间件的基本格式</h3><p>我们先写一个最简单的中间件，就是在控制台打印来的页面，和要去的页面。目的是通过最简单的实例来了解中间件的基本格式。 </p>
+<p>在项目根目录，新建一个middleware的文件夹，然后在文件下边新建一个文件default.global.ts 的文件。</p>
+<p>其中的.global代表这个中间件是全局的，也就是在每次跳转都会执行下面的代码。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineNuxtRouteMiddleware</span>(<span class="hljs-function">(<span class="hljs-params">to, <span class="hljs-keyword">from</span></span>) =&gt;</span> &#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;要去那个页面:&quot;</span>+to.<span class="hljs-property">path</span>)<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;来自那个页面:&quot;</span>+<span class="hljs-keyword">from</span>.<span class="hljs-property">path</span>)<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>写完之后，我们可以到浏览器看一下效果。如果一切正常，你可以看到，这时候你在每次跳转时，都会在终端中打出结果。</p>
+<p>当然我们可以继续编写代码，看看to 和from里到底都有什么属性。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineNuxtRouteMiddleware</span>(<span class="hljs-function">(<span class="hljs-params">to, <span class="hljs-keyword">from</span></span>) =&gt;</span> &#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;要去那个页面:&quot;</span>+to.<span class="hljs-property">path</span>)<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(to)<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;来自那个页面:&quot;</span>+<span class="hljs-keyword">from</span>.<span class="hljs-property">path</span>)<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-keyword">from</span>)<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>可以看到里边的内容是非常多的，特别是to的时候，你可以根据这些来进行编程。</p>
+<h3 id="2-通过中间件-设置路由守卫"><a href="#2-通过中间件-设置路由守卫" class="headerlink" title="2.通过中间件 设置路由守卫"></a>2.通过中间件 设置路由守卫</h3><p>当我们了解路由中间件的基本写法后，在增加一些难度，来模仿一下路由守卫。</p>
+<p>比如我们要访问的页面是<code>http://localhost:3000/demo1</code>，现在设置路由守卫，不允许访问，而是跳回到首页。那代码就可以写成下面的样子。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineNuxtRouteMiddleware</span>(<span class="hljs-function">(<span class="hljs-params">to, <span class="hljs-keyword">from</span></span>) =&gt;</span> &#123;<br>  <span class="hljs-keyword">if</span> (to.<span class="hljs-property">path</span> === <span class="hljs-string">&#x27;/demo1&#x27;</span>) &#123;<br>     <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;禁止访问这个页面&#x27;</span>)<br>     <span class="hljs-title function_">abortNavigation</span>()  <span class="hljs-comment">//停止当前导航，可以使用error进行报错</span><br>     <span class="hljs-keyword">return</span>  <span class="hljs-title function_">navigateTo</span>(<span class="hljs-string">&#x27;/&#x27;</span>)<br>  &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
+<p>这时候再到浏览器访问demo1 页面，已经不能访问了，但其他页面是可以访问的。</p>
+<h3 id="3-只对一个页面起作用"><a href="#3-只对一个页面起作用" class="headerlink" title="3.只对一个页面起作用"></a>3.只对一个页面起作用</h3><p>上面都是对所有路由起作用的，如果只想中间件对一个特殊页面起作用，也是可以的。只要去掉.global的后缀就是可以的。 </p>
+<p>在middleware 文件夹下，新建一个页面，default.ts，并编写下面的代码。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineNuxtRouteMiddleware</span>(<span class="hljs-function">(<span class="hljs-params">to, <span class="hljs-keyword">from</span></span>) =&gt;</span> &#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Hello&quot;</span>)<br>&#125;)<br></code></pre></td></tr></table></figure>
+<p>这时候它对任何页面都是不起作用的，你需要再去对应的页面里注册一下。去pages文件夹，新建一个文件demo7.vue。然后需要注册这个页面使用这个中间件，代码如下。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;template&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span>Demo7 Page<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>&lt;/template&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-title function_">definePageMeta</span>(&#123;</span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-attr">middleware</span>: [<span class="hljs-string">&quot;default&quot;</span>],</span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-comment">// or middleware: &#x27;auth&#x27;</span></span></span><br><span class="language-javascript"><span class="language-xml">&#125;);</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">scoped</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+<p>这样就对这个页面注册了一个专属的导航中间件。</p>
+<h2 id="十三、补充-Nuxt3-安装失败的时候如何处理"><a href="#十三、补充-Nuxt3-安装失败的时候如何处理" class="headerlink" title="十三、补充-Nuxt3 安装失败的时候如何处理"></a>十三、补充-Nuxt3 安装失败的时候如何处理</h2><p>今天我重新安装了公司的系统，系统安装完成后，准备再安装Nuxt3新目录，发现Nuxt3在挂了代理的情况下，依然无法安装成功，会出现下面的错误。</p>
+<p><strong>npx nuxi init nuxt-app</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs shell">D:\Demo&gt;npx nuxi init nuxt-app<br>npm WARN config global `--global`, `--local` are deprecated. Use `--location=global` instead.<br>Need to install the following packages:<br>  nuxi<br>Ok to proceed? (y) y<br>Nuxt CLI v3.0.0-27398533.8edd481 <br> WARN  could not fetch remote https://github.com/nuxt/starter                          <br> WARN  Make sure you have installed git correctly<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>下载Nuxt3的文件包<br>在多次尝试失败的情况下，我决定先去Github打包下载Nuxt的基本文件，然后再用yarn命令进行安装。</li>
+</ul>
+<p>于是我再Nuxt3的官方Github上找到了这样的网址。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/nuxt/starter/tree/v3">https://github.com/nuxt/starter/tree/v3</a><br>打开网址可以看到，这个就是最简单的Nuxt3项目的目录，这时候你可以Clone下来，但我发现Clone还是会报错，意思是无法找到仓库位置。那这时候我只能用最原始的下载ZIP（Download ZIP）的方式了。</p>
+<p>下载完成后，再使用yarn命令进行安装。</p>
+<ul>
+<li>yarn install</li>
+</ul>
+<p>稍等一会，就可以安装成功了。安装成功以后，再使用</p>
+<ul>
+<li>yarn dev</li>
+</ul>
+<p>开启服务后，再浏览器中输入 <a target="_blank" rel="noopener" href="http://localhost:3000/">http://localhost:3000/</a> ,就可以看到结果了。 这样我们就解决了无法用官方给出的方法安装的问题了。本视频只是个补充视频，希望可以帮助到安装失败的用户，进行安装。</p>
+<h2 id="十四、Nuxt3-中SEO相关的配置"><a href="#十四、Nuxt3-中SEO相关的配置" class="headerlink" title="十四、Nuxt3 中SEO相关的配置"></a>十四、Nuxt3 中SEO相关的配置</h2><p>使用Nuxt3框架解决的主要问题就是要对搜索引擎友好,那为什么搜索引擎可以搜到我的网站那？这要归功于HTML中的Mate标签和title 标签。</p>
+<p>title 和 meta 标签的作用</p>
+<p>title标签：主要是为了告诉搜索引擎我们的网站标题是什么，然后搜索引擎才会根据你提供的的title给你打上tag，用户在搜索的时候才会搜索到你。</p>
+<p>meta标签：这个标签根据name的不同有很多中，和SEO相关的主要是name&#x3D;description 和name&#x3D;keywords 这两种，如果不设置这两个标签，对SEO的效果就会有所影响。 </p>
+<p>所以我们在开发需要SEO的网站时，对这两个标签一定要进行设置。当然你可以用两种方法对meta标签进行设置，</p>
+<p>这节我们就讲两个方法。 1.使用useHead( )方法 2.直接在模板中使用标签</p>
+<p>Nuxt3中的useHead 和useMeta</p>
+<p>Nuxt3中提供了 useHead方法来设置SEO需要的内容，用它可以设置HTML中Head的全部内容，所以这也包括meta标签的内容，基本的使用方法也是很简单。</p>
+<p>在根目录中下的 page文件夹下，新建一个文件<code>demo1.vue</code>，然后使用 useHead( )方法来设置头部信息。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;template&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span>Demo8 Page<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>&lt;/template&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-title function_">useHead</span>(&#123;</span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-attr">title</span>: <span class="hljs-string">&quot; 博客&quot;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-attr">viewport</span>: <span class="hljs-string">&quot;width=device-width,initial-scale=1,maximum-scale=1 &quot;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-attr">charset</span>: <span class="hljs-string">&quot;utf-8&quot;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-attr">meta</span>: [</span></span><br><span class="language-javascript"><span class="language-xml">    &#123; <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;description&quot;</span>, <span class="hljs-attr">content</span>: <span class="hljs-string">&quot;博客&quot;</span> &#125;,</span></span><br><span class="language-javascript"><span class="language-xml">    &#123; <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;keywords&quot;</span>, <span class="hljs-attr">content</span>: <span class="hljs-string">&quot;trumen&quot;</span> &#125;,</span></span><br><span class="language-javascript"><span class="language-xml">  ],</span></span><br><span class="language-javascript"><span class="language-xml">&#125;);</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">scoped</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<p>如果你这时候报错，说明你按照的不是最新的Nuxt版本，可以直接安装最新的版本，我这里就在最新的版本上使用了useHead( ) 方法。</p>
+<p>使用template中的标签定义Head</p>
+<p>除了使用useHead( ) 方法外，你还可以直接使用<template> 中的的<head>来定义SEO相关的属性。</p>
+<p>我们在&#x2F;pages 文件夹下面，新建一个demo1.vue 的文件，然后编写下面的代码。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;template&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">Head</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">Title</span>&gt;</span>&#123;&#123; title &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">Title</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">Meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;description&quot;</span> <span class="hljs-attr">:content</span>=<span class="hljs-string">&quot;title&quot;</span> /&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">Head</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>博客<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>&lt;/template&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">import</span> &#123; ref &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;</span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">const</span> title = <span class="hljs-title function_">ref</span>(<span class="hljs-string">&quot;博客&quot;</span>);</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">scoped</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<p>从代码中可以看到，我们直接使用了<Head>标签，然后在里边还可以使用<Title>标签和<Meta>标签，可以设置这两个标签后，关于SEO的设置就都可以作了。</p>
+<p> 我们使用Nuxt的意义就在于可以有很好的SEO效果，所以在你开发的时候，一定要对页面进行标题、描述和关键词的设置和编写。 </p>
+<h2 id="十五、Nuxt3中Cookie的设置"><a href="#十五、Nuxt3中Cookie的设置" class="headerlink" title="十五、Nuxt3中Cookie的设置"></a>十五、Nuxt3中Cookie的设置</h2><p>在网页制作时，经常需要临时保存一些信息到Cookie中，而不是全部都保存到数据库中，这样作能减轻服务器的压力。这节就学习一下Nuxt3中的Cookie操作。</p>
+<h3 id="1-cookie的作用"><a href="#1-cookie的作用" class="headerlink" title="1.cookie的作用"></a>1.cookie的作用</h3><p>先来了解一下Cookie的作用，Cookie最常见的开发作用就是临时记录用户个人信息，比如我们登录了一个网站，然后提醒下次记住信息，下次再浏览这个网站时，就不用登录了。</p>
+<p>这就是cookie起的作用，当我们登录一次后，把登录信息记录在了cookie里，但是这个记录是有时效性的，通过属性可以进行设置。比如你连续7天没登录，那cookie就过期了，再浏览这个网站就需要重新登录了。</p>
+<h3 id="2-useCookie-方法的使用"><a href="#2-useCookie-方法的使用" class="headerlink" title="2.useCookie( )方法的使用"></a>2.useCookie( )方法的使用</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> cookie = <span class="hljs-title function_">useCookie</span>(name, options)<br></code></pre></td></tr></table></figure>
+<p>制作登录太复杂，我们这属于是入门的教程，所以就用Cookie制作一个计数器，让你了解Cookie的使用方法。这里要使用的函数就是useCookie ,代码如下。<br>在pages 文件夹下，新建一个页面demo3.vue</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;template&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Counter:&#123;&#123; counter &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;reset&quot;</span>&gt;</span>Reset<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;add&quot;</span>&gt;</span>Add<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br>&lt;/template&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">const</span> counter = <span class="hljs-title function_">useCookie</span>(<span class="hljs-string">&quot;counter&quot;</span>);</span></span><br><span class="language-javascript"><span class="language-xml">counter.<span class="hljs-property">value</span> = counter.<span class="hljs-property">value</span> || <span class="hljs-number">0</span>;</span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">const</span> <span class="hljs-title function_">reset</span> = (<span class="hljs-params"></span>) =&gt; &#123;</span></span><br><span class="language-javascript"><span class="language-xml">  counter.<span class="hljs-property">value</span> = <span class="hljs-number">0</span>;</span></span><br><span class="language-javascript"><span class="language-xml">&#125;;</span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">const</span> <span class="hljs-title function_">add</span> = (<span class="hljs-params"></span>) =&gt; &#123;</span></span><br><span class="language-javascript"><span class="language-xml">  counter.<span class="hljs-property">value</span> = counter.<span class="hljs-property">value</span> + <span class="hljs-number">1</span>;</span></span><br><span class="language-javascript"><span class="language-xml">&#125;;</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">scoped</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<p>这段代码的意思，我创建了一个叫做counter的Cookie值，然后取得Cookie值，放到页面上，如果没有Cookie值的时候，就初始化Counter的Cookie值为0。然后我又作了两个按钮，一个是直接将Cookie值设置为0，一个是每点击一次Cookie加1。</p>
+<p>代码编写完成后，可以到浏览器中查看一下效果，你也可以按F12打开浏览器的调试模式，找到Application 标签，再找到Cookie 选项，就可以看到里边的Cookie值了，这也很好的证明我们的Cookie值设置成功了。</p>
+<p>常用的相关属性</p>
+<p>useCookie( )函数，第一个参数是设置Cookie值的名字，第二个参数为选项option,我们接着来看有那些可选择配置的Cookie参数。（注意：我这里只说两个常用的）</p>
+<p>maxAge&#x2F;expires</p>
+<p>这两个参数都是设置Cookie的有效时长的，如果两个参数你都不设置，那Cookie的值在关闭浏览器的时候将会被清空。两个参数的不同是，maxAge的值是一个数字Number,而expires的值是一个日期对象Date object.<br>比如我们希望设置Cookie的过气时间是一个小时，也就是3600秒，那我们的配置就需要这样写。</p>
+<p>const counter &#x3D; useCookie(“counter”,{<br>  maxAge:3600,<br>});</p>
+<p><strong>httpOnly</strong></p>
+<p>这算是一个安全设置，如果把httpOnly设置为true，可以对最常见的XSS攻击起到防范作用。</p>
+<p>什么是HttpOnly？ HttpOnly是包含在http返回头Set-Cookiew里面的一个附件的flag，所以它是后端服务器对cookie设置的一个附件属性，在生成cookie时使用HttpOnly标志有助于减轻客户端脚本访问收保护cookie的风险。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> counter = <span class="hljs-title function_">useCookie</span>(<span class="hljs-string">&quot;counter&quot;</span>,&#123;<br>  <span class="hljs-attr">htttpOnly</span>:<span class="hljs-literal">true</span>,<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<p><strong>secure</strong></p>
+<p>这也是一个安全设置，如果你的网址不是HTTPS的，并且把secure的值设置为true，那Cookie的值就不会传递给服务端。总的来说还是一个为了服务器安全的设置。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> counter = <span class="hljs-title function_">useCookie</span>(<span class="hljs-string">&quot;counter&quot;</span>,&#123;<br>  <span class="hljs-attr">secure</span>:<span class="hljs-literal">true</span>,<br>&#125;);<br></code></pre></td></tr></table></figure>
+<p>这个需要配置HTTPS 所以不太好演示，这里也就不演示了。</p>
+<p>其余的还有domain ,path ,sameSite ,encode,decode 这些属性设置，其实都跟安全有关，因为Cookie的设置确实需要考虑安全性，所以根据服务端和app的需求，尽量设置多的安全性参数</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Nuxt3/" class="print-no-link">#Nuxt3</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Nuxt3</div>
+      <div>https://trumen1219.github.io/2023/04/15/nuxtjs/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Trumen</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年4月15日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/07/30/UniApp/" title="">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/04/01/Pinia/" title="Pinia">
+                        <span class="hidden-mobile">Pinia</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
